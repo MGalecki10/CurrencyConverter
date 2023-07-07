@@ -3,7 +3,6 @@ package org.example;
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,7 +12,6 @@ public class Main {
         try {
             List<Product> products = FileUtils.readProductsFromFile(productsListName);
             List<ExchangeRates> exchangeRates = FileUtils.readExchangeRatesFromFile(currenciesListName);
-
             showSumAllProducts(products, exchangeRates);
             showAveragePrice(products, exchangeRates);
             showMaxProduct(products, exchangeRates);
@@ -34,22 +32,16 @@ public class Main {
     }
 
     private static void showMaxProduct(List<Product> products, List<ExchangeRates> exchangeRates) {
-        Map<String, BigDecimal> theMostExpensiveProduct = CurrencyConverter
+        ProductWithEuroPrice theMostExpensiveProduct = CurrencyConverter
                 .getTheMostExpensiveProduct(products, exchangeRates);
-        if (!theMostExpensiveProduct.isEmpty()) {
-            String productName = theMostExpensiveProduct.keySet().iterator().next();
-            BigDecimal productPrice = theMostExpensiveProduct.get(productName);
-            System.out.println("Najdroższym produktem jest " + productName + " o wartosci " + productPrice);
-        }
+        System.out.println("Najdroższym produktem jest " + theMostExpensiveProduct.getName() +
+                " o wartosci " + theMostExpensiveProduct.getPriceInEuro());
     }
 
     private static void showMinProduct(List<Product> products, List<ExchangeRates> exchangeRates) {
-        Map<String, BigDecimal> theCheapestProduct = CurrencyConverter
+        ProductWithEuroPrice theCheapestProduct = CurrencyConverter
                 .getTheCheapestProduct(products, exchangeRates);
-        if (!theCheapestProduct.isEmpty()) {
-            String productName = theCheapestProduct.keySet().iterator().next();
-            BigDecimal productPrice = theCheapestProduct.get(productName);
-            System.out.println("Najtańszym produktem jest " + productName + " o wartosci " + productPrice);
-        }
+        System.out.println("Najtańszym produktem jest " + theCheapestProduct.getName() +
+                " o wartosci " + theCheapestProduct.getPriceInEuro());
     }
 }

@@ -19,9 +19,10 @@ public class Main {
             showMaxProduct(products, exchangeRates);
             showMinProduct(products, exchangeRates);
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            System.out.println("File does not found");
         }
     }
+
     private static void showSumAllProducts(List<Product> products, List<ExchangeRates> exchangeRates) {
         BigDecimal sumAllProducts = CurrencyConverter.getSumAllProductsInEuro(products, exchangeRates);
         System.out.println("Suma wszystkich produktów w EUR wynosi " + sumAllProducts);

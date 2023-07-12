@@ -19,13 +19,7 @@ Before running the application, make sure you have the following:
 1. Clone this repository to your local machine.
 2. Place the products.csv and currencies.csv files in the src/main/resources directory.
 3. Open a terminal and navigate to the project directory.
-4. Compile the Java files using the following command:
-   `javac -d bin -sourcepath src src/org/example/*.java`
-5. Run the application using the following command:
-
-shell
-Copy code
-java -cp bin org.example.Main
+4. Compile the Java file using fre IDE: InteliJ IDEA.
 
 # Usage
 

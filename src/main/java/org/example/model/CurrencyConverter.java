@@ -1,4 +1,4 @@
-package org.example;
+package org.example.model;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -21,7 +21,7 @@ public class CurrencyConverter {
         return productsInEuro;
     }
 
-    static BigDecimal getSumAllProductsInEuro(List<Product> productList, List<ExchangeRates> ratesList) {
+    public static BigDecimal getSumAllProductsInEuro(List<Product> productList, List<ExchangeRates> ratesList) {
         BigDecimal sum = BigDecimal.ZERO;
         List<ProductWithEuroPrice> priceInEuro = convertPriceToEuro(productList, ratesList);
         for (ProductWithEuroPrice productWithEuroPrice : priceInEuro) {
@@ -30,12 +30,12 @@ public class CurrencyConverter {
         return sum;
     }
 
-    static BigDecimal getAveragePriceInEuro(List<Product> productList, List<ExchangeRates> ratesList) {
+    public static BigDecimal getAveragePriceInEuro(List<Product> productList, List<ExchangeRates> ratesList) {
         BigDecimal sumInEuro = getSumAllProductsInEuro(productList, ratesList);
         return sumInEuro.divide(BigDecimal.valueOf(productList.size()), 2, RoundingMode.HALF_UP);
     }
 
-    static ProductWithEuroPrice getTheMostExpensiveProduct(List<Product> products, List<ExchangeRates> exchangeRates) {
+    public static ProductWithEuroPrice getTheMostExpensiveProduct(List<Product> products, List<ExchangeRates> exchangeRates) {
         List<ProductWithEuroPrice> productsInEuro = convertPriceToEuro(products, exchangeRates);
         BigDecimal maxPrice = BigDecimal.ZERO;
         ProductWithEuroPrice theMostExpensiveProduct = null;
@@ -49,7 +49,7 @@ public class CurrencyConverter {
         return theMostExpensiveProduct;
     }
 
-    static ProductWithEuroPrice getTheCheapestProduct(List<Product> products, List<ExchangeRates> exchangeRates) {
+    public static ProductWithEuroPrice getTheCheapestProduct(List<Product> products, List<ExchangeRates> exchangeRates) {
         List<ProductWithEuroPrice> productsInEuro = convertPriceToEuro(products, exchangeRates);
         BigDecimal minPrice = null;
         ProductWithEuroPrice theCheapestProduct = null;

@@ -1,5 +1,11 @@
 package org.example;
 
+import org.example.model.CurrencyConverter;
+import org.example.model.ExchangeRates;
+import org.example.model.Product;
+import org.example.model.ProductWithEuroPrice;
+import org.example.io.FileUtils;
+
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
 import java.util.List;

@@ -1,4 +1,7 @@
-package org.example;
+package org.example.io;
+
+import org.example.model.ExchangeRates;
+import org.example.model.Product;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,7 +12,7 @@ import java.util.Scanner;
 
 public class FileUtils {
 
-    static List<Product> readProductsFromFile(String fileName) throws FileNotFoundException {
+    public static List<Product> readProductsFromFile(String fileName) throws FileNotFoundException {
         Scanner scanner = new Scanner(new File(fileName));
         List<Product> products = new ArrayList<>();
         while (scanner.hasNextLine()) {
@@ -20,7 +23,7 @@ public class FileUtils {
         return products;
     }
 
-    static List<ExchangeRates> readExchangeRatesFromFile(String fileName) throws FileNotFoundException {
+    public static List<ExchangeRates> readExchangeRatesFromFile(String fileName) throws FileNotFoundException {
         Scanner scanner = new Scanner(new File(fileName));
         List<ExchangeRates> rates = new ArrayList<>();
         while (scanner.hasNextLine()) {
